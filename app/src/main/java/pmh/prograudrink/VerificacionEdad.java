@@ -28,6 +28,7 @@ public class VerificacionEdad extends AppCompatActivity {
 
                 Intent siguiente = new Intent(VerificacionEdad.this, MenuLateral.class);
                 startActivity(siguiente);
+                finish();
 
             }
         });
