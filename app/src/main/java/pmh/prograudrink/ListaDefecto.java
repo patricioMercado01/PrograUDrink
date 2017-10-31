@@ -22,7 +22,7 @@ public class ListaDefecto extends Fragment {
 
         String cocteles[] = new String[] {
                 "Margarita corona",
-                "1--Gelatina de champaña",
+                "Gelatina de champaña",
                 "Margarita de fresa con tequila",
                 "Sorbete de piña al cava",
                 "Caipiroska de pepino",
