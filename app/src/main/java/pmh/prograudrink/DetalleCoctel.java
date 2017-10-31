@@ -12,8 +12,17 @@ public class DetalleCoctel extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+onResume();
 
         return inflater.inflate(R.layout.fragment_detalle_coctel, container, false);
+    }
+
+    public void onResume(){
+        super.onResume();
+
+        // Set title bar
+        ((MenuLateral) getActivity())
+                .setActionBarTitle("Detalle Coctel");
+
     }
 }

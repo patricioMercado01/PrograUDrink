@@ -145,7 +145,7 @@
         android:layout_alignEnd="@+id/btnHombre"
         android:layout_alignRight="@+id/btnHombre"
         android:layout_below="@+id/btnCondiciones"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorRojito"
         android:text="Registrar" />
 
     <EditText

@@ -61,6 +61,14 @@ public class ListaDefecto extends Fragment {
 
         return view;
     }
+    public void onResume(){
+        super.onResume();
+
+        // Set title bar
+        ((MenuLateral) getActivity())
+                .setActionBarTitle("Cocteles");
+
+    }
 
 
 

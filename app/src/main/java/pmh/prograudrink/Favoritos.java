@@ -17,12 +17,16 @@ public class Favoritos extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        onResume();
+
         View view =inflater.inflate(R.layout.fragment_favoritos,container,false);
 
 
 
         Intent intent = new Intent(getActivity(), Login.class);
         getActivity().startActivity(intent);
+
 
 
         String cocteles[] = new String[] {
@@ -50,5 +54,14 @@ public class Favoritos extends Fragment {
             }
         });
         return view;
+    }
+
+    public void onResume(){
+        super.onResume();
+
+        // Set title bar
+        ((MenuLateral) getActivity())
+                .setActionBarTitle("Favoritos");
+
     }
 }
