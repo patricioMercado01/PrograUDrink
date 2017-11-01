@@ -1,5 +1,6 @@
 package pmh.prograudrink;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -81,11 +82,12 @@ public class MenuLateral extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (id == R.id.cocteles) {
-            fragmentManager.beginTransaction().replace(R.id.Contenedor,new ListaDefecto()).commit();
+            fragmentManager.beginTransaction().replace(R.id.Contenedor,new ListaDefecto()).addToBackStack(null).commit();
         } else if (id == R.id.favoritos) {
-            fragmentManager.beginTransaction().replace(R.id.Contenedor,new Favoritos()).commit();
+            fragmentManager.beginTransaction().replace(R.id.Contenedor,new Favoritos()).addToBackStack(null).commit();
         } else if (id == R.id.inventario) {
-
+            Intent intent = new Intent(MenuLateral.this, Inventario.class);
+            MenuLateral.this.startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
