@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "895830291227",
+    "firebase_url": "https://autentificacionudrink-caf49.firebaseio.com",
+    "project_id": "autentificacionudrink-caf49",
+    "storage_bucket": "autentificacionudrink-caf49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895830291227:android:cb672a278b0c15df",
+        "android_client_info": {
+          "package_name": "pmh.prograudrink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895830291227-238rtq9r0u8096quiqof3a843sqsb0jh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pmh.prograudrink",
+            "certificate_hash": "14a59d045be2c697a4b813912bcec2387d050be7"
+          }
+        },
+        {
+          "client_id": "895830291227-73d4pnmub6u5ql0k783mvdah9gc2k5dj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQgp7XaEXeoNjoZvK7C0ZZaIO_bn6DzTE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895830291227-73d4pnmub6u5ql0k783mvdah9gc2k5dj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
