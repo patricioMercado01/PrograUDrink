@@ -6,19 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class Login extends AppCompatActivity {
 
     Button btnRegistro;
     Button btnEntrar;
+    EditText loginPass,loginName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        btnRegistro = (Button)findViewById(R.id.btnRegistrar);
-        btnEntrar = (Button)findViewById(R.id.btnIngresarReg);
+        this.loginName = (EditText)findViewById(R.id.loginNameEdit);
+        this.loginPass = (EditText)findViewById(R.id.loginPassEdit);
+        this.btnRegistro = (Button)findViewById(R.id.btnRegistrar);
+        this.btnEntrar = (Button)findViewById(R.id.btnIngresarLog);
 
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +40,22 @@ public class Login extends AppCompatActivity {
             }
         });
 
+       this.loginName.setOnClickListener(new View.OnClickListener(){
+
+           @Override
+           public void onClick(View view) {
+               loginName.setText("");
+           }
+       });
+       this.loginPass.setOnClickListener(new View.OnClickListener(){
+
+           @Override
+           public void onClick(View view) {
+               loginPass.setText("");
+           }
+       });
 
     }
+
+
 }
