@@ -26,7 +26,7 @@ public class VerificacionEdad extends AppCompatActivity {
             @Override
             public void onClick(View w){
 
-                Intent siguiente = new Intent(VerificacionEdad.this, MenuLateral.class);
+                Intent siguiente = new Intent(VerificacionEdad.this, LoginFB.class);
                 startActivity(siguiente);
                 finish();
 

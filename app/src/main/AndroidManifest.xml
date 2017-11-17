@@ -25,7 +25,8 @@
         <activity
             android:name=".Inventario"
             android:label="@string/title_activity_inventario"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LoginFB"></activity>
     </application>
 
 </manifest>
