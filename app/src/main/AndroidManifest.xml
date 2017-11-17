@@ -20,8 +20,6 @@
             android:name=".MenuLateral"
             android:label="@string/title_activity_menu_lateral"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Login" />
-        <activity android:name=".Registro" />
         <activity
             android:name=".Inventario"
             android:label="@string/title_activity_inventario"
