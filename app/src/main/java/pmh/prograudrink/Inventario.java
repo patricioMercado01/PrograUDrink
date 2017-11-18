@@ -1,5 +1,7 @@
 package pmh.prograudrink;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +22,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Inventario extends AppCompatActivity {
     private SectionsPageAdapter mSectionPageAdapter;
     private ViewPager mViewPager;
@@ -28,6 +32,13 @@ public class Inventario extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if(auth.getCurrentUser() == null){
+            Intent siguiente = new Intent(Inventario.this, LoginFB.class);
+            startActivity(siguiente);
+            Inventario.this.overridePendingTransition(1,1);
+            finish();
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventario);
         Log.d(TAG,"onCreate: Starting.");
