@@ -34,6 +34,7 @@ public class Inventario extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser() == null){
             Intent siguiente = new Intent(Inventario.this, LoginFB.class);
