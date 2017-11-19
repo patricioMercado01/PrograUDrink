@@ -10,253 +10,236 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btnAgregar"
-            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
-            android:layout_width="150dp"
-
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button4"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="39dp"
-            android:text="Agregar"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_bias="0.657"
-            tools:layout_constraintBottom_creator="1"
-            tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1"
-            tools:layout_constraintTop_creator="1" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/editText"
-            android:layout_alignBottom="@+id/editText"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="22dp"
-            android:text="Nombre"
-            android:textSize="14sp" />
-
         <EditText
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
+            android:id="@+id/editNombre"
+            android:layout_width="@dimen/fui_auth_method_button_width"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginTop="13dp"
             android:ems="10"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/editDescripcion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/editText"
-            android:layout_below="@+id/editText"
-            android:ems="10"
-            android:inputType="textMultiLine"/>
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/spinLicor"
-            android:layout_alignStart="@+id/textView4"
-            android:text="Descripción"
+            android:inputType="textPersonName"
             android:textSize="14sp" />
-
-        <Spinner
-            android:id="@+id/spinLicor"
-            android:layout_width="@android:dimen/thumbnail_height"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/editDescripcion"
-            android:layout_marginTop="19dp" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/spinLicor"
-            android:layout_alignStart="@+id/textView5"
-            android:text="Licor"
-            android:textSize="14sp" />
-
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinLicor"
-            android:layout_marginEnd="65dp"
-            android:layout_toStartOf="@+id/checkBox3"
-            android:textColorLink="@color/colorRojito" />
-
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/editDescripcion"
-            android:layout_below="@+id/spinLicor"
-            android:textColorLink="@color/colorRojito" />
-
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/checkBox2"
-            android:layout_below="@+id/checkBox2"
-            android:textColorLink="@color/colorRojito" />
-
-        <CheckBox
-            android:id="@+id/checkBox5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/checkBox3"
-            android:layout_below="@+id/checkBox3"
-            android:textColorLink="@color/colorRojito" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView6"
-            android:layout_below="@+id/checkBox4"
-            android:layout_marginTop="14dp"
-            android:text="Ingredientes" />
-
-        <Spinner
-            android:id="@+id/spinIngredientes"
-            android:layout_width="@android:dimen/thumbnail_width"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView2"
-            android:layout_alignParentEnd="true" />
-
-        <CheckBox
-            android:id="@+id/checkBox6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/checkBox4"
-            android:layout_below="@+id/spinIngredientes"
-            android:textColorLink="@color/colorRojito"/>
-
-        <CheckBox
-            android:id="@+id/checkBox7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/checkBox5"
-            android:layout_below="@+id/spinIngredientes"
-            android:textColorLink="@color/colorRojito"/>
-
-        <CheckBox
-            android:id="@+id/checkBox8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/checkBox7"
-            android:layout_below="@+id/checkBox7"
-            android:textColorLink="@color/colorRojito"/>
-
-        <CheckBox
-            android:id="@+id/checkBox9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/checkBox6"
-            android:layout_below="@+id/checkBox6"
-            android:textColorLink="@color/colorRojito"/>
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_below="@+id/checkBox9"
-            android:layout_marginTop="11dp"
-            android:text="Implementos" />
-
-        <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/spinIngredientes"
-            android:layout_alignTop="@+id/textView3" />
-
-        <CheckBox
-            android:id="@+id/checkBox10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/checkBox9"
-            android:layout_below="@+id/spinner2"
-            android:textColorLink="@color/colorRojito"/>
-
-        <CheckBox
-            android:id="@+id/checkBox11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/checkBox10"
-            android:layout_below="@+id/checkBox10"
-            android:textColorLink="@color/colorRojito"/>
-
-        <CheckBox
-            android:id="@+id/checkBox12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/checkBox5"
-            android:layout_below="@+id/spinner2"
-            android:textColorLink="@color/colorRojito"/>
-
-        <CheckBox
-            android:id="@+id/checkBox13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/checkBox12"
-            android:layout_below="@+id/checkBox12"
-            android:textColorLink="@color/colorRojito"/>
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView3"
-            android:layout_below="@+id/checkBox11"
-            android:layout_marginTop="28dp"
-            android:text="Prepación" />
+            android:layout_alignBottom="@+id/editNombre"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:text="Nombre" />
 
-        <EditText
-            android:id="@+id/editText2"
+        <TextView
+            android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView8"
-            android:layout_alignBottom="@+id/textView8"
-            android:layout_alignEnd="@+id/checkBox13"
+            android:layout_alignBottom="@+id/editDescripcion"
+            android:layout_alignStart="@+id/textView8"
+            android:text="Descripción" />
+
+        <EditText
+            android:id="@+id/editDescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editNombre"
+            android:layout_alignStart="@+id/editNombre"
+            android:layout_below="@+id/editNombre"
+            android:layout_marginTop="29dp"
             android:ems="10"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView10"
+            android:layout_below="@+id/textView10"
+            android:layout_marginTop="41dp"
+            android:text="Licores" />
+
+        <EditText
+            android:id="@+id/editLicor"
+            android:layout_width="@android:dimen/notification_large_icon_height"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView11"
+            android:layout_alignEnd="@+id/editDescripcion"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spinLicores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView11"
+            android:layout_alignStart="@+id/editDescripcion"
+            android:layout_toStartOf="@+id/editLicor" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnLicor1"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fui_field_padding_vert"
+
+            android:layout_alignStart="@+id/spinLicores"
+            android:layout_below="@+id/spinLicores"
+            android:elevation="21dp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnLicor2"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fui_field_padding_vert"
+
+            android:layout_above="@+id/btnLicor3"
+            android:layout_alignStart="@+id/btnLicor4"
+            android:elevation="21dp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnLicor3"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fui_field_padding_vert"
+            android:layout_alignStart="@+id/btnLicor1"
+            android:layout_below="@+id/btnLicor1"
+            android:elevation="21dp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnLicor4"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fui_field_padding_vert"
+
+            android:layout_above="@+id/editText8"
+            android:layout_alignEnd="@+id/editText8"
+            android:layout_marginEnd="13dp"
+            android:elevation="21dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView10"
+            android:layout_alignTop="@+id/spinner3"
+            android:text="Ingredientes" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="@android:dimen/notification_large_icon_width"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnLicor3"
+            android:layout_toEndOf="@+id/spinLicores"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="@dimen/nav_header_height"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editText8"
+            android:layout_toStartOf="@+id/editText8" />
+
+        <Button
+            android:id="@+id/btnIngrediente1"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fui_field_padding_vert"
+            android:layout_alignStart="@+id/btnLicor3"
+            android:layout_below="@+id/editText8"
+            android:layout_marginTop="12dp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnIngrediente3"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fui_field_padding_vert"
+            android:layout_alignStart="@+id/btnIngrediente1"
+            android:layout_below="@+id/btnIngrediente1"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnIngrediente2"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fui_field_padding_vert"
+            android:layout_above="@+id/btnIngrediente3"
+            android:layout_alignStart="@+id/btnLicor4"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnIngrediente4"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fui_field_padding_vert"
+
+            android:layout_alignStart="@+id/btnIngrediente2"
+            android:layout_below="@+id/btnIngrediente2"
+            android:elevation="21dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editText9"
+            android:layout_alignStart="@+id/textView12"
+            android:text="Descripción" />
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText8"
+            android:layout_alignStart="@+id/btnIngrediente3"
+            android:layout_below="@+id/btnIngrediente3"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/imgUpImage"
+            android:layout_width="@dimen/nav_header_height"
+            android:layout_height="@dimen/nav_header_height"
+            android:layout_alignEnd="@+id/editText9"
+            android:layout_below="@+id/editText9"
+            android:layout_marginTop="22dp"
+            app:srcCompat="@android:drawable/ic_menu_report_image" />
+
+        <Button
+            android:id="@+id/btnUpImage"
             style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/fui_submit_button_margin_top"
-            android:layout_alignStart="@+id/textView8"
-            android:layout_below="@+id/editText2"
-            android:layout_marginTop="67dp"
-            android:text="Agregar imagen" />
+            android:layout_alignStart="@+id/textView13"
+            android:layout_alignTop="@+id/imgUpImage"
+            android:layout_marginTop="70dp"
+            android:text="Agregar imagen"
+            android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/nombreImagen"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/button13"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/button4"
-            android:layout_alignEnd="@+id/btnAgregar" />
 
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imgUpImage"
+            android:layout_marginTop="30dp"
+            android:text="Agregar coctel"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
     </RelativeLayout>
+
 
 </ScrollView>
