@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "29043362821-d0q1a72sv9bl2mat5tl08i5oc541hc2r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pmh.prograudrink",
+            "certificate_hash": "bffbb293175e9cc9376b22c61bf74efc396d5250"
+          }
+        },
+        {
           "client_id": "29043362821-dksp8s2s783q8ei757d9hl4jc9i28cnr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

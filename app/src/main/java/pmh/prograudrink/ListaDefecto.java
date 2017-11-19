@@ -41,7 +41,6 @@ public class ListaDefecto extends Fragment {
         coctelReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.d(TAG,"coctel listo"+ dataSnapshot.getValue().toString());
                 cocteles += (dataSnapshot.getValue().toString()+",");
 
                 ArrayAdapter<String> lisAdapter = new ArrayAdapter<String>(getActivity(),

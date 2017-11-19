@@ -18,8 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class Ingredientes extends Fragment {
-    private static final String TAG = "Ingredientes";
-
     private FirebaseDatabase database;
     private String INGREDIENTE_CHILD = "ingrediente";
 
@@ -41,7 +39,6 @@ public class Ingredientes extends Fragment {
         coctelReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.d(TAG,"ingrediente listo"+ dataSnapshot.getValue().toString());
                 ingredientes += (dataSnapshot.getValue().toString()+",");
 
                 ArrayAdapter<String> lisAdapter = new ArrayAdapter<String>(getActivity(),

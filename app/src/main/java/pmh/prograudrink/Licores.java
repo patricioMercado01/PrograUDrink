@@ -17,8 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class Licores extends Fragment {
-    private static final String TAG = "Licores";
-
     private FirebaseDatabase database;
     private String LICOR_CHILD = "licores";
 
@@ -41,8 +39,6 @@ public class Licores extends Fragment {
             coctelReference.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    listView.setAdapter(null);
-                        Log.d(TAG,"licor listo"+ dataSnapshot.getValue().toString());
                         licores += (dataSnapshot.getValue().toString()+",");
 
                         ArrayAdapter<String> lisAdapter = new ArrayAdapter<String>(getActivity(),
