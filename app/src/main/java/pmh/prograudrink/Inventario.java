@@ -28,6 +28,8 @@ public class Inventario extends AppCompatActivity {
     private SectionsPageAdapter mSectionPageAdapter;
     private ViewPager mViewPager;
     private static final  String TAG = "MainActivity";
+    private FloatingActionButton agregar;
+
 
 
     @Override
@@ -43,6 +45,8 @@ public class Inventario extends AppCompatActivity {
         setContentView(R.layout.activity_inventario);
         Log.d(TAG,"onCreate: Starting.");
 
+
+
         mSectionPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager)findViewById(R.id.container);
@@ -50,13 +54,22 @@ public class Inventario extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+         agregar = (FloatingActionButton)findViewById(R.id.flotAgregar);
+
+        agregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cambio = new Intent(Inventario.this,IngresoNuevoCoctel.class);
+                startActivity(cambio);
+                finish();
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager){
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new Licores());
         adapter.addFragment(new Ingredientes());
-        adapter.addFragment(new Implementos());
         viewPager.setAdapter(adapter);
     }
 }
