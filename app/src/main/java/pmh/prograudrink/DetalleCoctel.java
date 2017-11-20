@@ -30,7 +30,7 @@ public class DetalleCoctel extends Fragment {
         onResume();
         this.actualCoctel = new Coctel("CervezaRon");
          test();
-
+//Test Push from hell
 
         return inflater.inflate(R.layout.fragment_detalle_coctel, container, false);
 
