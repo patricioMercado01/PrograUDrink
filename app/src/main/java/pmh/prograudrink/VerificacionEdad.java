@@ -39,6 +39,7 @@ public class VerificacionEdad extends AppCompatActivity {
 
                 Toast toast = Toast.makeText(getApplicationContext(), "Solo mayores de edad", Toast.LENGTH_SHORT);
                 toast.show();
+                finish();
             }
         });
 
