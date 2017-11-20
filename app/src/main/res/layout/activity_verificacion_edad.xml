@@ -33,7 +33,7 @@
             android:text="Esta aplicación está diseñada únicamete a los usuarios que sean mayores de 18 años, ¿Cumple ustéd este requisito?"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
