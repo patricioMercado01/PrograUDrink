@@ -31,9 +31,11 @@ public class Coctel {
 
     public void test(){
 
-        licores.add("Cerveza");
-        licores.add("Ron");
+        licores.add("Ron Blanco");
+        ingredientes.add("Azúcar flor");
         ingredientes.add("Menta");
+        ingredientes.add("Jugo de limón");
+        ingredientes.add("hielo");
     }
 
     public ArrayList<String> getLicores() {

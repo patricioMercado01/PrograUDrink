@@ -46,7 +46,9 @@ public class DetalleCoctel extends Fragment {
 
     private void test(){
 
-        this.actualCoctel.definirCoctel("New Coctel","Esto no se prepara aun :v","Es un coctel test nigga from hell");
+        this.actualCoctel.definirCoctel("Mojito","Coloca todos los ingredientes en una licuadora e inicia con velocidad lenta,  auméntala poco a poco, hasta que ya no se escuche ningún hielo y se logre la textura frozen.\n" +
+                "Pon la mezcla en un vaso previamente refrigerado, para que no se pierda la textura frozen.  \n" +
+                "Adornar con una ramita de menta y una rodaja de lima.","El mojito\u200B es un popular cóctel originario de Cuba, compuesto de ron, azúcar, limón, menta o hierbabuena y agua mineralizada.");
         this.actualCoctel.test();
     }
 
@@ -64,6 +66,7 @@ public class DetalleCoctel extends Fragment {
         this.descripcion.setText(actualCoctel.getDescripcion());
         this.preparacion.setText(actualCoctel.getPreparacion());
         this.licores.setText(obtenerLicores());
+        this.ingredientes.setText(obtenerIngredientes());
     }
     public void definirLayout(){
 
@@ -77,7 +80,7 @@ public class DetalleCoctel extends Fragment {
 
     }
     public String obtenerLicores() {
-        String stringLicores = null;
+        String stringLicores = "" ;
         ArrayList<String> licoresArray = actualCoctel.getLicores();
 
         for (int i=0;i<licoresArray.size();i++){
@@ -86,6 +89,18 @@ public class DetalleCoctel extends Fragment {
         }
 
         return stringLicores;
+    }
+
+    public String obtenerIngredientes() {
+        String stringIngredientes = "" ;
+        ArrayList<String> IngredientesArray = actualCoctel.getIngredientes();
+
+        for (int i=0;i<IngredientesArray.size();i++){
+            String nuevosIngredientes = IngredientesArray.get(i);
+            stringIngredientes += (nuevosIngredientes+ " /n ");
+        }
+
+        return stringIngredientes;
     }
 }
 
