@@ -1,7 +1,6 @@
 package pmh.prograudrink;
 
 import android.os.Bundle;
-import android.support.design.widget.TabItem;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,7 +32,7 @@ public class Ingredientes extends Fragment {
         View view =inflater.inflate(R.layout.fragment_ingredientes,container,false);
 
 
-        final ListView listView = (ListView)view.findViewById(R.id.ingredientes);
+        final ListView listView = (ListView)view.findViewById(R.id.textIngredientesCoctel);
 
         database = FirebaseDatabase.getInstance();
         final DatabaseReference coctelReference = database.getReference().child(INGREDIENTE_CHILD);

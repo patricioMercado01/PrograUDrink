@@ -30,7 +30,7 @@ public class Licores extends Fragment {
         View view =inflater.inflate(R.layout.fragment_licores,container,false);
 
 
-        final ListView listView = (ListView)view.findViewById(R.id.licores);
+        final ListView listView = (ListView)view.findViewById(R.id.textCoctelLicores);
 
         database = FirebaseDatabase.getInstance();
         final DatabaseReference coctelReference = database.getReference().child(LICOR_CHILD);

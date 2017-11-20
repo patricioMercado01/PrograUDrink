@@ -6,7 +6,7 @@
 
     <!-- TODO: Update blank fragment layout -->
        <ListView
-           android:id="@+id/licores"
+           android:id="@+id/textCoctelLicores"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content">
 
