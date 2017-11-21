@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 
-public class Favoritos extends Fragment {
+public class Favoritos extends android.support.v4.app.Fragment {
 
 
     private FirebaseDatabase database;

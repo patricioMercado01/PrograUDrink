@@ -1,7 +1,7 @@
 package pmh.prograudrink;
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class Licores extends Fragment {
+public class Licores extends android.support.v4.app.Fragment {
     private FirebaseDatabase database;
     private String LICOR_CHILD = "licores";
 

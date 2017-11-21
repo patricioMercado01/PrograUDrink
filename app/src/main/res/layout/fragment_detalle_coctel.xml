@@ -14,16 +14,20 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+
+            >
 
 
             <TextView
                 android:id="@+id/textCoctelNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/imageCoctelImagen"
                 android:layout_alignParentStart="true"
+                android:layout_marginHorizontal="20dp"
                 android:text="Nombre"
+                android:textColor="@color/colorRojito"
                 android:textSize="18sp" />
 
             <ImageView
@@ -33,7 +37,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="182dp"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo"
+                />
 
 
         </RelativeLayout>
@@ -41,46 +46,60 @@
         <TextView
             android:id="@+id/textIngredientesCoctel"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView5"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="17dp"
             android:text="Ingredientes"
+            android:textColor="@color/cardview_dark_background"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textCoctelDescripcion"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/imageCoctelImagen"
             android:layout_alignParentStart="true"
-            android:text="Descripcion"
-            android:textSize="18sp" />
+            android:text="Descripción"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/cardview_dark_background"
+            />
 
         <TextView
             android:textSize="18sp"
             android:id="@+id/textCoctelUtensillios"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView6"
-            android:text="Utensilios" />
+            android:text="Utensilios"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/cardview_dark_background"
+            />
 
         <TextView
             android:textSize="18sp"
             android:id="@+id/textCoctelLicores"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView7"
             android:layout_below="@+id/textView7"
-            android:text="Licores" />
+            android:text="Licores"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/cardview_dark_background"
+            />
 
         <TextView
             android:id="@+id/textCoctelPreparacion"
             android:textSize="18sp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Preparacion" />
+            android:layout_height="wrap_content"
+            android:text="Preparación"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/cardview_dark_background"
+            />
 
 
     </LinearLayout>

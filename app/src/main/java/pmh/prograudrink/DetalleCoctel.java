@@ -1,8 +1,8 @@
 package pmh.prograudrink;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 
-public class DetalleCoctel extends Fragment {
+public class DetalleCoctel extends android.support.v4.app.Fragment{
 
 
     private Coctel actualCoctel;
@@ -46,9 +46,9 @@ public class DetalleCoctel extends Fragment {
 
     private void test(){
 
-        this.actualCoctel.definirCoctel("Mojito","Coloca todos los ingredientes en una licuadora e inicia con velocidad lenta,  auméntala poco a poco, hasta que ya no se escuche ningún hielo y se logre la textura frozen.\n" +
-                "Pon la mezcla en un vaso previamente refrigerado, para que no se pierda la textura frozen.  \n" +
-                "Adornar con una ramita de menta y una rodaja de lima.","El mojito\u200B es un popular cóctel originario de Cuba, compuesto de ron, azúcar, limón, menta o hierbabuena y agua mineralizada.");
+        this.actualCoctel.definirCoctel("Mojito","\nColoca todos los ingredientes en una licuadora e inicia con velocidad lenta,  auméntala poco a poco, hasta que ya no se escuche ningún hielo y se logre la textura frozen."+
+                "\nPon la mezcla en un vaso previamente refrigerado, para que no se pierda la textura frozen."+
+                "\nAdornar con una ramita de menta y una rodaja de lima.","El mojito,\u200B es un popular cóctel originario de Cuba, compuesto de ron, azúcar, limón, menta o hierbabuena y agua mineralizada.");
         this.actualCoctel.test();
     }
 
@@ -85,7 +85,7 @@ public class DetalleCoctel extends Fragment {
 
         for (int i=0;i<licoresArray.size();i++){
             String nuevosLicores = licoresArray.get(i);
-            stringLicores += (nuevosLicores+ " /n ");
+            stringLicores += (nuevosLicores+ " \n ");
         }
 
         return stringLicores;
@@ -97,7 +97,7 @@ public class DetalleCoctel extends Fragment {
 
         for (int i=0;i<IngredientesArray.size();i++){
             String nuevosIngredientes = IngredientesArray.get(i);
-            stringIngredientes += (nuevosIngredientes+ " /n ");
+            stringIngredientes += (nuevosIngredientes+ " \n ");
         }
 
         return stringIngredientes;

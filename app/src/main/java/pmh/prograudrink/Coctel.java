@@ -35,7 +35,7 @@ public class Coctel {
         ingredientes.add("Azúcar flor");
         ingredientes.add("Menta");
         ingredientes.add("Jugo de limón");
-        ingredientes.add("hielo");
+        ingredientes.add("Hielo");
     }
 
     public ArrayList<String> getLicores() {
