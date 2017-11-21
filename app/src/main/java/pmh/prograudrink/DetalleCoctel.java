@@ -72,7 +72,6 @@ public class DetalleCoctel extends android.support.v4.app.Fragment{
 
         this.descripcion = getView().findViewById(R.id.textCoctelDescripcion);
         this.preparacion = getView().findViewById(R.id.textCoctelPreparacion);
-        this.implementos = getView().findViewById(R.id.textCoctelUtensillios);
         this.ingredientes = getView().findViewById(R.id.textIngredientesCoctel);
         this.licores = getView().findViewById(R.id.textCoctelLicores);
         this.nombre = getView().findViewById(R.id.textCoctelNombre);

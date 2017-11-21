@@ -70,6 +70,4 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
             }
         }
     }
-
-
 }

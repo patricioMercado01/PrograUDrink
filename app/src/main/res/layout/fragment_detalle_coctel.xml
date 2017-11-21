@@ -44,6 +44,17 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/textCoctelDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:text="Descripción"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/cardview_dark_background"
+            />
+
+        <TextView
             android:id="@+id/textIngredientesCoctel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,30 +65,6 @@
             android:text="Ingredientes"
             android:textColor="@color/cardview_dark_background"
             android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textCoctelDescripcion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageCoctelImagen"
-            android:layout_alignParentStart="true"
-            android:text="Descripción"
-            android:textSize="18sp"
-            android:layout_marginHorizontal="20dp"
-            android:textColor="@color/cardview_dark_background"
-            />
-
-        <TextView
-            android:textSize="18sp"
-            android:id="@+id/textCoctelUtensillios"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView6"
-            android:text="Utensilios"
-            android:layout_marginHorizontal="20dp"
-            android:textColor="@color/cardview_dark_background"
-            />
 
         <TextView
             android:textSize="18sp"

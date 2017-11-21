@@ -23,8 +23,6 @@ public class Ingredientes extends Fragment {
 
     private String ingredientes;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
