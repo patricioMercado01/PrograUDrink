@@ -23,9 +23,9 @@ import static android.content.ContentValues.TAG;
 
 public class ListaDefecto extends Fragment {
     private FirebaseDatabase database;
-    private String COCTEL_CHILD = "cocteles";
 
-    private String cocteles;
+    private String COCTEL_CHILD = "cocteles";
+    private String cocteles = "";
 
 
     @Override

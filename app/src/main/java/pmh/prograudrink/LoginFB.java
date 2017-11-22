@@ -24,7 +24,7 @@ public class LoginFB extends AppCompatActivity {
 
         if(auth.getCurrentUser() != null){
             FirebaseUser firebaseUser = auth.getCurrentUser();
-            Toast.makeText(this,"usuario logueado"+ firebaseUser.getDisplayName(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Usuario logueado"+ firebaseUser.getDisplayName(),Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this,MenuLateral.class));
         }else{
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setIsSmartLockEnabled(false).setAvailableProviders(Arrays.
@@ -43,7 +43,7 @@ public class LoginFB extends AppCompatActivity {
                 finish();
                 return;
             }else{
-                Toast.makeText(this, "hubo un problema con el inicio de sesión",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Hubo un problema con el inicio de sesión",Toast.LENGTH_SHORT).show();
             }
         }
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Coctel {
 
-
+    private int id;
     private ArrayList<String> licores;
     private ArrayList<String> ingredientes;
     private String nombre;

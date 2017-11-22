@@ -29,7 +29,7 @@ public class Favoritos extends android.support.v4.app.Fragment {
     private FirebaseDatabase database;
     private String FAVORITOS_CHILD = "favoritos";
 
-    private String favoritos;
+    private String favoritos = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
