@@ -51,7 +51,9 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private String LICOR_CHILD = "licores";
-    private String licores;
+    private String INGREDIENTES_CHILD = "ingrediente";
+    private String licores = "";
+    private String ingredientes = "";
 
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
@@ -68,6 +70,8 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
         editDescripcion = (EditText) findViewById(R.id.editDescripcion);
         editNombre = (EditText) findViewById(R.id.editNombre);
         editPreparacion = (EditText) findViewById(R.id.editPreparacion);
+        spinLicor = (Spinner)findViewById(R.id.spinLicores);
+        spinIngrediente = (Spinner)findViewById(R.id.spinIngredientes);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
@@ -81,16 +85,49 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
         });
 
         database = FirebaseDatabase.getInstance();
+
+        final  DatabaseReference ingredienteReference = database.getReference().child(INGREDIENTES_CHILD);
+        ingredienteReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                ingredientes += (dataSnapshot.getValue().toString() + ",");
+
+                ArrayAdapter<String> adapterLicor = new ArrayAdapter<String>(getApplicationContext(),
+                        android.R.layout.simple_spinner_item, ingredientes.split(","));
+
+                spinIngrediente.setAdapter(adapterLicor);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         final DatabaseReference coctelReference = database.getReference().child(LICOR_CHILD);
         coctelReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 licores += (dataSnapshot.getValue().toString() + ",");
-                List<String> listLicores = new ArrayList<>(Arrays.asList(licores));
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-                        android.R.layout.simple_spinner_item,listLicores);
-
+                        android.R.layout.simple_spinner_item, licores.split(","));
 
                 spinLicor.setAdapter(adapter);
             }
