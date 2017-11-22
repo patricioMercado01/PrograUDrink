@@ -35,13 +35,7 @@ public class Inventario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        if(auth.getCurrentUser() == null){
-            Intent siguiente = new Intent(Inventario.this, LoginFB.class);
-            startActivity(siguiente);
-            Inventario.this.overridePendingTransition(1,1);
-            finish();
-        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventario);
         Log.d(TAG,"onCreate: Starting.");

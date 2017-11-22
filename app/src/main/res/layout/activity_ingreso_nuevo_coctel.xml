@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -116,8 +115,8 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/fui_field_padding_vert"
 
-            android:layout_above="@+id/editText8"
-            android:layout_alignEnd="@+id/editText8"
+            android:layout_above="@+id/editIngrediente"
+            android:layout_alignEnd="@+id/editIngrediente"
             android:layout_marginEnd="13dp"
             android:elevation="21dp"
             android:visibility="invisible" />
@@ -131,7 +130,7 @@
             android:text="Ingredientes" />
 
         <EditText
-            android:id="@+id/editText8"
+            android:id="@+id/editIngrediente"
             android:layout_width="@android:dimen/notification_large_icon_width"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnLicor3"
@@ -144,8 +143,8 @@
             android:id="@+id/spinner3"
             android:layout_width="@dimen/nav_header_height"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/editText8"
-            android:layout_toStartOf="@+id/editText8" />
+            android:layout_alignBottom="@+id/editIngrediente"
+            android:layout_toStartOf="@+id/editIngrediente" />
 
         <Button
             android:id="@+id/btnIngrediente1"
@@ -153,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/fui_field_padding_vert"
             android:layout_alignStart="@+id/btnLicor3"
-            android:layout_below="@+id/editText8"
+            android:layout_below="@+id/editIngrediente"
             android:layout_marginTop="12dp"
             android:visibility="invisible" />
 
@@ -190,15 +189,15 @@
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/editText9"
+            android:layout_alignBottom="@+id/editPreparacion"
             android:layout_alignStart="@+id/textView12"
-            android:text="Descripción" />
+            android:text="Preparación" />
 
         <EditText
-            android:id="@+id/editText9"
+            android:id="@+id/editPreparacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/editText8"
+            android:layout_alignEnd="@+id/editIngrediente"
             android:layout_alignStart="@+id/btnIngrediente3"
             android:layout_below="@+id/btnIngrediente3"
             android:ems="10"
@@ -209,8 +208,8 @@
             android:id="@+id/imgUpImage"
             android:layout_width="@dimen/nav_header_height"
             android:layout_height="@dimen/nav_header_height"
-            android:layout_alignEnd="@+id/editText9"
-            android:layout_below="@+id/editText9"
+            android:layout_alignEnd="@+id/editPreparacion"
+            android:layout_below="@+id/editPreparacion"
             android:layout_marginTop="22dp"
             app:srcCompat="@android:drawable/ic_menu_report_image" />
 

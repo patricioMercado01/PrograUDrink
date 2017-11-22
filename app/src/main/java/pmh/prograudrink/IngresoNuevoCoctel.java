@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,11 +25,26 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
 
     private Button btnUpImage;
     private ImageView imageView;
+    private EditText editDescripcion;
+    private EditText editNombre;
+    private EditText editPreparacion;
+    private Spinner spinLicor;
+    private Spinner spinIngrediente;
+    private Button  btnLicor1;
+    private Button  btnLicor2;
+    private Button  btnLicor3;
+    private Button  btnLicor4;
+    private Button  btnIngrediente1;
+    private Button  btnIngrediente2;
+    private Button  btnIngrediente3;
+    private Button  btnIngrediente4;
+
+
+
 
 
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
-
     private Uri filePath;
 
     @Override
@@ -35,8 +52,13 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingreso_nuevo_coctel);
 
-        imageView =(ImageView) findViewById(R.id.imgUpImage);
-        btnUpImage =(Button)findViewById(R.id.btnUpImage);
+        
+        imageView = (ImageView) findViewById(R.id.imgUpImage);
+        btnUpImage = (Button) findViewById(R.id.btnUpImage);
+        editDescripcion =(EditText) findViewById(R.id.editDescripcion);
+        editNombre = (EditText)findViewById(R.id.editNombre);
+        editPreparacion =(EditText)findViewById(R.id.editPreparacion);
+
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);

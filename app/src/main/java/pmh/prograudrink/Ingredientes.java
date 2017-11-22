@@ -1,5 +1,7 @@
 package pmh.prograudrink;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabItem;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +29,15 @@ public class Ingredientes extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if(auth.getCurrentUser() == null){
+            Intent siguiente = new Intent(getActivity(), LoginFB.class);
+            startActivity(siguiente);
+            ((Activity) getActivity()).overridePendingTransition(0,0);
+            getActivity().finish();
+        }
         View view =inflater.inflate(R.layout.fragment_ingredientes,container,false);
 
 
