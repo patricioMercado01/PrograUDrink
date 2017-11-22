@@ -7,17 +7,27 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static android.app.PendingIntent.getActivity;
 
 public class IngresoNuevoCoctel extends AppCompatActivity {
 
@@ -30,18 +40,18 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
     private EditText editPreparacion;
     private Spinner spinLicor;
     private Spinner spinIngrediente;
-    private Button  btnLicor1;
-    private Button  btnLicor2;
-    private Button  btnLicor3;
-    private Button  btnLicor4;
-    private Button  btnIngrediente1;
-    private Button  btnIngrediente2;
-    private Button  btnIngrediente3;
-    private Button  btnIngrediente4;
+    private Button btnLicor1;
+    private Button btnLicor2;
+    private Button btnLicor3;
+    private Button btnLicor4;
+    private Button btnIngrediente1;
+    private Button btnIngrediente2;
+    private Button btnIngrediente3;
+    private Button btnIngrediente4;
 
-
-
-
+    private FirebaseDatabase database;
+    private String LICOR_CHILD = "licores";
+    private String licores;
 
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
@@ -52,21 +62,57 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingreso_nuevo_coctel);
 
-        
+
         imageView = (ImageView) findViewById(R.id.imgUpImage);
         btnUpImage = (Button) findViewById(R.id.btnUpImage);
-        editDescripcion =(EditText) findViewById(R.id.editDescripcion);
-        editNombre = (EditText)findViewById(R.id.editNombre);
-        editPreparacion =(EditText)findViewById(R.id.editPreparacion);
-
+        editDescripcion = (EditText) findViewById(R.id.editDescripcion);
+        editNombre = (EditText) findViewById(R.id.editNombre);
+        editPreparacion = (EditText) findViewById(R.id.editPreparacion);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
+
 
         btnUpImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showFileChooser();
+            }
+        });
+
+        database = FirebaseDatabase.getInstance();
+        final DatabaseReference coctelReference = database.getReference().child(LICOR_CHILD);
+        coctelReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                licores += (dataSnapshot.getValue().toString() + ",");
+                List<String> listLicores = new ArrayList<>(Arrays.asList(licores));
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                        android.R.layout.simple_spinner_item,listLicores);
+
+
+                spinLicor.setAdapter(adapter);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
 
