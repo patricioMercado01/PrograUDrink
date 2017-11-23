@@ -49,6 +49,8 @@ public class Inventario extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.getTabAt(0).setText("Licores");
+        tabLayout.getTabAt(1).setText("Ingredientes");
          agregar = (FloatingActionButton)findViewById(R.id.flotAgregar);
 
         agregar.setOnClickListener(new View.OnClickListener() {

@@ -15,6 +15,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "29043362821-p8nqmdejniekplf0f0av14tso9hs4aqs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pmh.prograudrink",
+            "certificate_hash": "818b6c53eb17813fc76f09ed5b2508be36b43a5d"
+          }
+        },
+        {
+          "client_id": "29043362821-nf9u8kuq7t8lot4cfhgalh881n48ti98.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pmh.prograudrink",
+            "certificate_hash": "001c07b3516a9f023eab62f32f77383a8d7cfafa"
+          }
+        },
+        {
+          "client_id": "29043362821-v81k3v469ettpffpf6v70nv99dps6jat.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pmh.prograudrink",
+            "certificate_hash": "6c317763544b31acbb9ee5a5ec1331d7a24d263b"
+          }
+        },
+        {
           "client_id": "29043362821-d0q1a72sv9bl2mat5tl08i5oc541hc2r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
