@@ -23,7 +23,7 @@ public class Licores extends android.support.v4.app.Fragment {
     private FirebaseDatabase database;
     private String LICOR_CHILD = "licores";
 
-    private String licores;
+    private String licores ="";
 
 
     @Override

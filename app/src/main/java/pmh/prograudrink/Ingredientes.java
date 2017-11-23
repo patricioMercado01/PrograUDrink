@@ -24,7 +24,7 @@ public class Ingredientes extends Fragment {
     private FirebaseDatabase database;
     private String INGREDIENTE_CHILD = "ingrediente";
 
-    private String ingredientes;
+    private String ingredientes = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
