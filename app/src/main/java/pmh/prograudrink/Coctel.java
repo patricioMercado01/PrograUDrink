@@ -15,7 +15,9 @@ public class Coctel {
     private String descripcion;
     private String preparacion;
 
-    public Coctel(String nombre){
+    public Coctel(){
+
+
 
         this.licores = new ArrayList<>();
         this.ingredientes = new ArrayList<>();
