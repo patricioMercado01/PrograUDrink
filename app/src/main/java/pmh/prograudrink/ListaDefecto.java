@@ -24,7 +24,7 @@ import static android.content.ContentValues.TAG;
 public class ListaDefecto extends Fragment {
     private FirebaseDatabase database;
 
-    private String COCTEL_CHILD = "cocteles";
+    private String COCTEL_CHILD = "Jsonstring";
     private String cocteles = "";
 
 
@@ -36,15 +36,19 @@ public class ListaDefecto extends Fragment {
         final DatabaseReference coctelReference = database.getReference().child(COCTEL_CHILD);
 
         final ListView listView = (ListView)view.findViewById(R.id.listView);
-
-
         coctelReference.addChildEventListener(new ChildEventListener() {
             @Override
+
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                cocteles += (dataSnapshot.getValue().toString()+",");
+
+                Coctel newCoctel = dataSnapshot.getValue(Coctel.class);
+                String nombre = newCoctel.getNombre();
+                cocteles += (nombre +",");
 
                 ArrayAdapter<String> lisAdapter = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_expandable_list_item_1,cocteles.split(","));
+
+
                 listView.setAdapter(lisAdapter);
 
             }
@@ -77,8 +81,20 @@ public class ListaDefecto extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i>=0 && i<=16){
-                    FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.Contenedor,detalleCoctel).addToBackStack(null).commit();
+                    Object object = listView.getAdapter().getItem(i);
+                    Bundle args = new Bundle();
+
+                    String valor = object.toString();
+
+
+                    args.putString("nombre", valor);
+
+
+                    detalleCoctel.setArguments(args);
+                    System.out.println("Valor = "+args.getString("nombre"));
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.Contenedor,detalleCoctel).commit();
+
                 }
             }
         });
@@ -95,10 +111,11 @@ public class ListaDefecto extends Fragment {
     }
 
 
-
     private void move(){
 
 
     }
+
+
 
 }
