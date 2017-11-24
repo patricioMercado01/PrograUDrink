@@ -38,8 +38,8 @@ public class Ingredientes extends Fragment {
             ((Activity) getActivity()).overridePendingTransition(0,0);
             getActivity().finish();
         }
-        View view =inflater.inflate(R.layout.fragment_ingredientes,container,false);
 
+        View view =inflater.inflate(R.layout.fragment_ingredientes,container,false);
 
         final ListView listView = (ListView)view.findViewById(R.id.ingredientes);
 
@@ -58,22 +58,18 @@ public class Ingredientes extends Fragment {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
 

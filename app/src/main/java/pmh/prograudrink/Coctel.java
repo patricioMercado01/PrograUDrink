@@ -15,24 +15,29 @@ public class Coctel {
     private String descripcion;
     private String preparacion;
 
-    public Coctel(){
+    public Coctel(ArrayList<String> licores, ArrayList<String> ingredientes, String nombre, String descripcion, String preparacion) {
+        this.licores = licores;
+        this.ingredientes = ingredientes;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.preparacion = preparacion;
+    }
 
-
+    public Coctel(String nombre) {
 
         this.licores = new ArrayList<>();
         this.ingredientes = new ArrayList<>();
 
     }
 
-    public void definirCoctel(String n,String prep,String desc){
+    public void definirCoctel(String n, String prep, String desc) {
         this.nombre = n;
         this.preparacion = prep;
         this.descripcion = desc;
 
     }
 
-    public void test(){
-
+    public void test() {
         licores.add("Ron Blanco");
         ingredientes.add("Azúcar flor");
         ingredientes.add("Menta");

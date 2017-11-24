@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -40,14 +41,19 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
     private EditText editPreparacion;
     private Spinner spinLicor;
     private Spinner spinIngrediente;
+    private Button btnAddLicor;
     private Button btnLicor1;
     private Button btnLicor2;
     private Button btnLicor3;
     private Button btnLicor4;
+    private Button btnAddIngr;
     private Button btnIngrediente1;
     private Button btnIngrediente2;
     private Button btnIngrediente3;
     private Button btnIngrediente4;
+    private EditText editLicor;
+    private EditText editIngr;
+    private Button btnAddCoctel;
 
     private FirebaseDatabase database;
     private String LICOR_CHILD = "licores";
@@ -70,8 +76,24 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
         editDescripcion = (EditText) findViewById(R.id.editDescripcion);
         editNombre = (EditText) findViewById(R.id.editNombre);
         editPreparacion = (EditText) findViewById(R.id.editPreparacion);
-        spinLicor = (Spinner)findViewById(R.id.spinLicores);
-        spinIngrediente = (Spinner)findViewById(R.id.spinIngredientes);
+        btnAddCoctel = (Button) findViewById(R.id.btnAddCoctel);
+
+        spinIngrediente = (Spinner) findViewById(R.id.spinIngredientes);
+        btnAddIngr = (Button) findViewById(R.id.btnAddIngr);
+        btnIngrediente1 = (Button) findViewById(R.id.btnIngrediente1);
+        btnIngrediente2 = (Button) findViewById(R.id.btnIngrediente2);
+        btnIngrediente3 = (Button) findViewById(R.id.btnIngrediente3);
+        btnIngrediente4 = (Button) findViewById(R.id.btnIngrediente4);
+        editIngr = (EditText) findViewById(R.id.editIngrediente);
+
+        spinLicor = (Spinner) findViewById(R.id.spinLicores);
+        editLicor = (EditText) findViewById(R.id.editLicor);
+        btnAddLicor = (Button) findViewById(R.id.btnAddLicor);
+        btnLicor1 = (Button) findViewById(R.id.btnLicor1);
+        btnLicor2 = (Button) findViewById(R.id.btnLicor2);
+        btnLicor3 = (Button) findViewById(R.id.btnLicor3);
+        btnLicor4 = (Button) findViewById(R.id.btnLicor4);
+
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
@@ -86,7 +108,7 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
-        final  DatabaseReference ingredienteReference = database.getReference().child(INGREDIENTES_CHILD);
+        final DatabaseReference ingredienteReference = database.getReference().child(INGREDIENTES_CHILD);
         ingredienteReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -149,6 +171,153 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        btnLicor1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnLicor1.setText("");
+            }
+        });
+        btnLicor2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnLicor2.setText("");
+            }
+        });
+
+        btnLicor3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnLicor3.setText("");
+            }
+        });
+
+        btnLicor4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnLicor4.setText("");
+            }
+        });
+
+        btnIngrediente1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnIngrediente1.setText("");
+            }
+        });
+        btnIngrediente2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnIngrediente2.setText("");
+            }
+        });
+        btnIngrediente3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnIngrediente3.setText("");
+            }
+        });
+        btnIngrediente4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnIngrediente4.setText("");
+            }
+        });
+
+
+        btnAddLicor.setOnClickListener(new View.OnClickListener() {
+            String cantidad;
+            String licor;
+
+            @Override
+            public void onClick(View view) {
+                if (editLicor.getText().toString().length() > 0) {
+                    cantidad = editLicor.getText().toString();
+                    licor = spinLicor.getSelectedItem().toString();
+
+                    if (btnLicor1.getText().toString() == "") {
+                        btnLicor1.setText(licor + " " + cantidad);
+                    } else if (btnLicor2.getText() == "") {
+                        btnLicor2.setText(licor + " " + cantidad);
+                    } else if (btnLicor3.getText() == "") {
+                        btnLicor3.setText(licor + " " + cantidad);
+                    } else if (btnLicor4.getText() == "") {
+                        btnLicor4.setText(licor + " " + cantidad);
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Llena el campo con la cantidad de licor que tiene su coctel", Toast.LENGTH_SHORT);
+                }
+            }
+        });
+
+        btnAddIngr.setOnClickListener(new View.OnClickListener() {
+
+            String ingrediente;
+            String cantidad;
+
+            @Override
+            public void onClick(View view) {
+                if (editIngr.getText().toString().length() > 0) {
+                    ingrediente = spinIngrediente.getSelectedItem().toString();
+                    cantidad = editIngr.getText().toString();
+
+                    if (btnIngrediente1.getText().toString() == "") {
+                        btnIngrediente1.setText(ingrediente + " " + cantidad);
+                    } else if (btnIngrediente2.getText().toString() == "") {
+                        btnIngrediente2.setText(ingrediente + " " + cantidad);
+                    } else if (btnIngrediente3.getText().toString() == "") {
+                        btnIngrediente3.setText(ingrediente + " " + cantidad);
+                    } else if (btnIngrediente4.getText().toString() == "") {
+                        btnIngrediente4.setText(ingrediente + " " + cantidad);
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Llena el campo con la cantidad de ingrediente que tiene su coctel", Toast.LENGTH_SHORT);
+                }
+            }
+        });
+
+        btnAddCoctel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> listLicores = new ArrayList<String>();
+                if (btnLicor1.getText().toString() != "") {
+                    listLicores.add(btnLicor1.getText().toString());
+                }
+                if (btnLicor2.getText().toString() != "") {
+                    listLicores.add(btnLicor2.getText().toString());
+                }
+                if (btnLicor3.getText().toString() != "") {
+                    listLicores.add(btnLicor3.getText().toString());
+                }
+                if (btnLicor4.getText().toString() != "") {
+                    listLicores.add(btnLicor4.getText().toString());
+                }
+
+                ArrayList<String> listIngr = new ArrayList<String>();
+                if (btnIngrediente1.getText().toString() != "") {
+                    listIngr.add(btnIngrediente1.getText().toString());
+                }
+                if (btnIngrediente2.getText().toString() != "") {
+                    listIngr.add(btnIngrediente2.getText().toString());
+                }
+                if (btnIngrediente3.getText().toString() != "") {
+                    listIngr.add(btnIngrediente3.getText().toString());
+                }
+                if (btnIngrediente4.getText().toString() != "") {
+                    listIngr.add(btnIngrediente4.getText().toString());
+                }
+
+                if (listLicores.size() == 0 || listIngr.size() == 0 || editNombre.equals("") || editDescripcion.equals("") ){
+                    Toast.makeText(getApplicationContext(),"Faltan datos por rellenar",Toast.LENGTH_SHORT).show();
+                }else{
+                    Coctel coctel = new Coctel(listLicores, listIngr, editNombre.getText().toString(), editDescripcion.getText().toString(), editDescripcion.getText().toString());
+                    Toast.makeText(getApplicationContext(),"Su coctel "+editNombre.getText().toString()+" ha sido creado",Toast.LENGTH_SHORT).show();
+                    finish();
+                }
 
             }
         });
