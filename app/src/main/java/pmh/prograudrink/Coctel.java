@@ -23,7 +23,7 @@ public class Coctel {
         this.preparacion = preparacion;
     }
 
-    public Coctel(String nombre) {
+    public Coctel() {
 
         this.licores = new ArrayList<>();
         this.ingredientes = new ArrayList<>();
@@ -65,5 +65,7 @@ public class Coctel {
         return this.preparacion;
     }
 
-
+    public int getId() {
+        return id;
+    }
 }
