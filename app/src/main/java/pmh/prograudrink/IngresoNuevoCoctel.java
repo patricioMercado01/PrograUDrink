@@ -180,54 +180,58 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 btnLicor1.setText("");
+                btnLicor1.setVisibility(View.INVISIBLE);
             }
         });
         btnLicor2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnLicor2.setText("");
+                btnLicor2.setVisibility(View.INVISIBLE);
             }
         });
-
         btnLicor3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnLicor3.setText("");
+                btnLicor3.setVisibility(View.INVISIBLE);
             }
         });
-
         btnLicor4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnLicor4.setText("");
+                btnLicor4.setVisibility(View.INVISIBLE);
             }
         });
-
         btnIngrediente1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnIngrediente1.setText("");
+                btnIngrediente1.setVisibility(View.INVISIBLE);
             }
         });
         btnIngrediente2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnIngrediente2.setText("");
+                btnIngrediente2.setVisibility(View.INVISIBLE);
             }
         });
         btnIngrediente3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnIngrediente3.setText("");
+                btnIngrediente3.setVisibility(View.INVISIBLE);
             }
         });
         btnIngrediente4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnIngrediente4.setText("");
+                btnIngrediente4.setVisibility(View.INVISIBLE);
             }
         });
-
 
         btnAddLicor.setOnClickListener(new View.OnClickListener() {
             String cantidad;
@@ -241,15 +245,19 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
 
                     if (btnLicor1.getText().toString() == "") {
                         btnLicor1.setText(licor + " " + cantidad);
+                        btnLicor1.setVisibility(View.VISIBLE);
                     } else if (btnLicor2.getText() == "") {
                         btnLicor2.setText(licor + " " + cantidad);
+                        btnLicor2.setVisibility(View.VISIBLE);
                     } else if (btnLicor3.getText() == "") {
                         btnLicor3.setText(licor + " " + cantidad);
+                        btnLicor3.setVisibility(View.VISIBLE);
                     } else if (btnLicor4.getText() == "") {
                         btnLicor4.setText(licor + " " + cantidad);
+                        btnLicor4.setVisibility(View.VISIBLE);
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Llena el campo con la cantidad de licor que tiene su coctel", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "Llena el campo con la cantidad de licor que tiene su coctel", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -267,15 +275,19 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
 
                     if (btnIngrediente1.getText().toString() == "") {
                         btnIngrediente1.setText(ingrediente + " " + cantidad);
+                        btnIngrediente1.setVisibility(View.VISIBLE);
                     } else if (btnIngrediente2.getText().toString() == "") {
                         btnIngrediente2.setText(ingrediente + " " + cantidad);
+                        btnIngrediente2.setVisibility(View.VISIBLE);
                     } else if (btnIngrediente3.getText().toString() == "") {
                         btnIngrediente3.setText(ingrediente + " " + cantidad);
+                        btnIngrediente3.setVisibility(View.VISIBLE);
                     } else if (btnIngrediente4.getText().toString() == "") {
                         btnIngrediente4.setText(ingrediente + " " + cantidad);
+                        btnIngrediente4.setVisibility(View.VISIBLE);
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Llena el campo con la cantidad de ingrediente que tiene su coctel", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "Llena el campo con la cantidad de ingrediente que tiene su coctel", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -296,7 +308,6 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
                 if (btnLicor4.getText().toString() != "") {
                     listLicores.add(btnLicor4.getText().toString());
                 }
-
                 ArrayList<String> listIngr = new ArrayList<String>();
                 if (btnIngrediente1.getText().toString() != "") {
                     listIngr.add(btnIngrediente1.getText().toString());
