@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import static android.content.ContentValues.TAG;
+import java.util.ArrayList;
 
 
 public class ListaDefecto extends Fragment {
@@ -26,7 +25,7 @@ public class ListaDefecto extends Fragment {
 
     private String COCTEL_CHILD = "Jsonstring";
     private String cocteles = "";
-
+    private ArrayList<Coctel> listaCocteles;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +33,7 @@ public class ListaDefecto extends Fragment {
         View view =inflater.inflate(R.layout.fragment_fragmen_list,container,false);
         database = FirebaseDatabase.getInstance();
         final DatabaseReference coctelReference = database.getReference().child(COCTEL_CHILD);
-
+        listaCocteles = new ArrayList<>();
         final ListView listView = (ListView)view.findViewById(R.id.listView);
         coctelReference.addChildEventListener(new ChildEventListener() {
             @Override
@@ -43,6 +42,7 @@ public class ListaDefecto extends Fragment {
 
                 Coctel newCoctel = dataSnapshot.getValue(Coctel.class);
                 String nombre = newCoctel.getNombre();
+                listaCocteles.add(newCoctel);
                 cocteles += (nombre +",");
 
                 ArrayAdapter<String> lisAdapter = new ArrayAdapter<String>(getActivity(),
@@ -82,16 +82,21 @@ public class ListaDefecto extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i>=0 && i<=16){
                     Object object = listView.getAdapter().getItem(i);
+                    Coctel coctelData;
                     Bundle args = new Bundle();
 
                     String valor = object.toString();
+                    coctelData =  buscarCocteles(valor);
+                    System.out.println(coctelData.getNombre());
 
-
-                    args.putString("nombre", valor);
+                    args.putString("nombre", coctelData.getNombre());
+                    args.putString("desc",coctelData.getDescripcion());
+                    args.putString("prep",coctelData.getPreparacion());
+                    args.putStringArrayList("licores",coctelData.getLicores());
+                    args.putStringArrayList("ingredientes",coctelData.getIngredientes());
 
 
                     detalleCoctel.setArguments(args);
-                    System.out.println("Valor = "+args.getString("nombre"));
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.Contenedor,detalleCoctel).commit();
 
@@ -110,12 +115,20 @@ public class ListaDefecto extends Fragment {
 
     }
 
+    public Coctel buscarCocteles(String nombre){
+        Coctel findendCoctel = null;
 
-    private void move(){
+        for (int i=0;i<listaCocteles.size();i++){
+            String nombreBusqueda = listaCocteles.get(i).getNombre();
+            if (nombre.equals(nombreBusqueda)){
+
+                findendCoctel = listaCocteles.get(i);
+            }
 
 
+        }
+        return findendCoctel;
     }
-
 
 
 }
