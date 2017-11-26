@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -65,6 +67,9 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private Uri filePath;
 
+    private static final int GALLERY_INTENT = 1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,12 +104,12 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
 
 
-        btnUpImage.setOnClickListener(new View.OnClickListener() {
+       /* btnUpImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showFileChooser();
             }
-        });
+        });*/
 
         database = FirebaseDatabase.getInstance();
 
@@ -322,37 +327,47 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
                     listIngr.add(btnIngrediente4.getText().toString());
                 }
 
-                if (listLicores.size() == 0 || listIngr.size() == 0 || editNombre.equals("") || editDescripcion.equals("") ){
-                    Toast.makeText(getApplicationContext(),"Faltan datos por rellenar",Toast.LENGTH_SHORT).show();
-                }else{
+                if (listLicores.size() == 0 || listIngr.size() == 0 || editNombre.equals("") || editDescripcion.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Faltan datos por rellenar", Toast.LENGTH_SHORT).show();
+                } else {
                     Coctel coctel = new Coctel(listLicores, listIngr, editNombre.getText().toString(), editDescripcion.getText().toString(), editDescripcion.getText().toString());
-                    Toast.makeText(getApplicationContext(),"Su coctel "+editNombre.getText().toString()+" ha sido creado",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Su coctel " + editNombre.getText().toString() + " ha sido creado", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
             }
         });
 
-    }
+        btnUpImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    private void showFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-    }
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, GALLERY_INTENT);
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            filePath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        }
+
+        });
     }
-}
+        @Override
+        protected void onActivityResult(int requestCode,int resultCode,Intent data){
+            super.onActivityResult(requestCode, resultCode, data);
+
+            if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+                Uri uri = data.getData();
+                StorageReference filePath = storageReference.child("Pictures").child(uri.getLastPathSegment());
+                filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(IngresoNuevoCoctel.this, "Foto Correcta", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
+
+            }
+
+        }
+
+    }

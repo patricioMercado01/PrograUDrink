@@ -68,4 +68,28 @@ public class Coctel {
     public int getId() {
         return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLicores(ArrayList<String> licores) {
+        this.licores = licores;
+    }
+
+    public void setIngredientes(ArrayList<String> ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setPreparacion(String preparacion) {
+        this.preparacion = preparacion;
+    }
 }
