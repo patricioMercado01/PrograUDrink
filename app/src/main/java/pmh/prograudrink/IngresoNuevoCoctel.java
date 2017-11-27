@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -53,6 +54,7 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
     private EditText editIngr;
     private Button btnAddCoctel;
 
+    private int cantidadDatos;
 
     //Descarga de datos
     private FirebaseDatabase database;
@@ -63,12 +65,11 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
 
     //subida de datos
     private String MI_COCTEL_CHILD = "misCocteles";
-    private String miCoctel = "";
+
 
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
     private Uri filePath;
-
     private static final int GALLERY_INTENT = 1;
 
 
@@ -76,7 +77,6 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingreso_nuevo_coctel);
-
 
         imageView = (ImageView) findViewById(R.id.imgUpImage);
         btnUpImage = (Button) findViewById(R.id.btnUpImage);
@@ -125,27 +125,18 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
                         android.R.layout.simple_spinner_item, ingredientes.split(","));
 
                 spinIngrediente.setAdapter(adapterLicor);
-
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
             }
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
             }
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
 
@@ -181,7 +172,6 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
 
             }
         });
-
 
         btnLicor1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -240,6 +230,7 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
             }
         });
 
+
         btnAddLicor.setOnClickListener(new View.OnClickListener() {
             String cantidad;
             String licor;
@@ -272,6 +263,7 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
         btnAddIngr.setOnClickListener(new View.OnClickListener() {
             String ingrediente;
             String cantidad;
+
             @Override
             public void onClick(View view) {
                 if (editIngr.getText().toString().length() > 0) {
@@ -297,15 +289,16 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
             }
         });
 
-        //se agrega el coctel a firebase, como un  json
-        final DatabaseReference miCoctelReference = database.getReference().child(MI_COCTEL_CHILD);
-        final Map<Integer, Coctel> misCocteles= new HashMap<Integer, Coctel>();
-
-
+        numberChild();
         btnAddCoctel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final DatabaseReference miCoctelReference = database.getReference().child(MI_COCTEL_CHILD);
+
                 ArrayList<String> listLicores = new ArrayList<String>();
+                ArrayList<String> listIngr = new ArrayList<String>();
+
+
                 if (btnLicor1.getText().toString() != "") {
                     listLicores.add(btnLicor1.getText().toString());
                 }
@@ -318,7 +311,6 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
                 if (btnLicor4.getText().toString() != "") {
                     listLicores.add(btnLicor4.getText().toString());
                 }
-                ArrayList<String> listIngr = new ArrayList<String>();
                 if (btnIngrediente1.getText().toString() != "") {
                     listIngr.add(btnIngrediente1.getText().toString());
                 }
@@ -331,53 +323,61 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
                 if (btnIngrediente4.getText().toString() != "") {
                     listIngr.add(btnIngrediente4.getText().toString());
                 }
-
                 if (listLicores.size() == 0 || listIngr.size() == 0 || editNombre.equals("") || editDescripcion.equals("")) {
                     Toast.makeText(getApplicationContext(), "Faltan datos por rellenar", Toast.LENGTH_SHORT).show();
                 } else {
 
-
-                    Coctel coctel = new Coctel(listLicores, listIngr, editNombre.getText().toString(), editDescripcion.getText().toString(), editDescripcion.getText().toString());
-                    misCocteles.put(1,coctel);
-                    miCoctelReference.setValue(misCocteles);
+                    Coctel coctel = new Coctel(cantidadDatos, listLicores, listIngr, editNombre.getText().toString(), editDescripcion.getText().toString(), editDescripcion.getText().toString());
+                    miCoctelReference.child(Integer.toString(cantidadDatos)).setValue(coctel);
                     Toast.makeText(getApplicationContext(), "Su coctel " + editNombre.getText().toString() + " ha sido creado", Toast.LENGTH_SHORT).show();
-
                     finish();
                 }
-
             }
         });
+
 
         btnUpImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, GALLERY_INTENT);
-
             }
-
         });
     }
-        @Override
-        protected void onActivityResult(int requestCode,int resultCode,Intent data){
-            super.onActivityResult(requestCode, resultCode, data);
 
-            if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK && data != null && data.getData() != null) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-                Uri uri = data.getData();
-                StorageReference filePath = storageReference.child("Pictures").child(uri.getLastPathSegment());
-                filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(IngresoNuevoCoctel.this, "Foto Correcta", Toast.LENGTH_SHORT).show();
-                    }
+        if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
-                });
+            Uri uri = data.getData();
+            StorageReference filePath = storageReference.child("Pictures").child(uri.getLastPathSegment());
+            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(IngresoNuevoCoctel.this, "Foto Correcta", Toast.LENGTH_SHORT).show();
+                }
 
-            }
+            });
 
         }
 
     }
+
+    private void numberChild() {
+        mDatabase = database.getReference(MI_COCTEL_CHILD);
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                cantidadDatos = (int) dataSnapshot.getChildrenCount();
+                Toast.makeText(getApplicationContext(), "cantidad de datos en base " + cantidadDatos, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+}

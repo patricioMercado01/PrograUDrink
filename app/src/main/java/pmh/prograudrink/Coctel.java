@@ -23,6 +23,15 @@ public class Coctel {
         this.preparacion = preparacion;
     }
 
+    public Coctel(int id, ArrayList<String> licores, ArrayList<String> ingredientes, String nombre, String descripcion, String preparacion) {
+        this.id = id;
+        this.licores = licores;
+        this.ingredientes = ingredientes;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.preparacion = preparacion;
+    }
+
     public Coctel() {
 
         this.licores = new ArrayList<>();

@@ -48,26 +48,18 @@ public class ListaDefecto extends Fragment {
                 ArrayAdapter<String> lisAdapter = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_expandable_list_item_1,cocteles.split(","));
 
-
                 listView.setAdapter(lisAdapter);
 
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
             }
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
             }
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
