@@ -359,11 +359,8 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Toast.makeText(IngresoNuevoCoctel.this, "Foto Correcta", Toast.LENGTH_SHORT).show();
                 }
-
             });
-
         }
-
     }
 
     private void numberChild() {
@@ -372,7 +369,6 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 cantidadDatos = (int) dataSnapshot.getChildrenCount();
-                Toast.makeText(getApplicationContext(), "cantidad de datos en base " + cantidadDatos, Toast.LENGTH_SHORT).show();
             }
 
             @Override
