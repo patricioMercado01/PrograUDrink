@@ -98,5 +98,16 @@ public class DetalleCoctel extends android.support.v4.app.Fragment {
             this.actualCoctel.setIngredientes(data.getStringArrayList("ingredientes"));
         }
 
+    public void setCoctel(Bundle data){
+        this.actualCoctel= new Coctel();
+        this.actualCoctel.setNombre(data.getString("nombre"));
+        this.actualCoctel.setDescripcion(data.getString("desc"));
+        this.actualCoctel.setPreparacion(data.getString("prep"));
+        this.actualCoctel.setLicores(data.getStringArrayList("licores"));
+        this.actualCoctel.setIngredientes(data.getStringArrayList("ingredientes"));
+    }
+
 }
+
+
 

@@ -137,11 +137,11 @@
             android:id="@+id/editIngrediente"
             android:layout_width="@android:dimen/notification_large_icon_width"
             android:layout_height="wrap_content"
-            android:text=""
             android:layout_below="@+id/btnLicor3"
             android:layout_toEndOf="@+id/spinLicores"
             android:ems="10"
             android:inputType="textPersonName"
+            android:text=""
             android:textSize="14sp" />
 
         <Spinner
