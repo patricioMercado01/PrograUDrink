@@ -90,7 +90,7 @@
             android:layout_marginTop="14dp"
             android:layout_toEndOf="@+id/textView8"
             android:elevation="21dp"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnLicor2"
@@ -101,7 +101,7 @@
             android:layout_above="@+id/btnLicor3"
             android:layout_alignStart="@+id/btnLicor4"
             android:elevation="21dp"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnLicor3"
@@ -111,7 +111,7 @@
             android:layout_alignStart="@+id/btnLicor1"
             android:layout_below="@+id/btnLicor1"
             android:elevation="21dp"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnLicor4"
@@ -123,7 +123,7 @@
             android:layout_alignEnd="@+id/editIngrediente"
             android:layout_marginEnd="13dp"
             android:elevation="21dp"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/textView12"
@@ -147,10 +147,10 @@
         <Spinner
             android:id="@+id/spinIngredientes"
             style="@style/Widget.AppCompat.Spinner.DropDown"
-            android:layout_width="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnIngrediente1"
-            android:layout_alignStart="@+id/editPreparacion"
+            android:layout_alignStart="@+id/spinLicores"
             android:layout_toStartOf="@+id/editIngrediente" />
 
         <Button
@@ -161,7 +161,7 @@
             android:layout_alignStart="@+id/btnLicor3"
             android:layout_below="@+id/editIngrediente"
             android:layout_marginTop="12dp"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnIngrediente3"
@@ -170,7 +170,7 @@
             android:layout_height="@dimen/fui_field_padding_vert"
             android:layout_alignStart="@+id/btnIngrediente1"
             android:layout_below="@+id/btnIngrediente1"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnIngrediente2"
@@ -179,7 +179,7 @@
             android:layout_height="@dimen/fui_field_padding_vert"
             android:layout_above="@+id/btnIngrediente3"
             android:layout_alignStart="@+id/btnLicor4"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnIngrediente4"
@@ -190,23 +190,24 @@
             android:layout_alignStart="@+id/btnIngrediente2"
             android:layout_below="@+id/btnIngrediente2"
             android:elevation="21dp"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/editPreparacion"
+            android:layout_above="@+id/imgUpImage"
             android:layout_alignStart="@+id/textView12"
             android:text="Preparación" />
 
         <EditText
             android:id="@+id/editPreparacion"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/nav_header_height"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/btnAddIngr"
-            android:layout_alignStart="@+id/spinLicores"
+            android:layout_alignStart="@+id/spinIngredientes"
             android:layout_below="@+id/btnIngrediente3"
+            android:layout_marginTop="17dp"
             android:ems="10"
             android:inputType="textMultiLine"
             android:textSize="14sp" />

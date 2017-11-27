@@ -1,9 +1,7 @@
 package pmh.prograudrink;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,11 +22,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.app.PendingIntent.getActivity;
 
@@ -57,11 +53,17 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
     private EditText editIngr;
     private Button btnAddCoctel;
 
+
+    //Descarga de datos
     private FirebaseDatabase database;
     private String LICOR_CHILD = "licores";
     private String INGREDIENTES_CHILD = "ingrediente";
     private String licores = "";
     private String ingredientes = "";
+
+    //subida de datos
+    private String MI_COCTEL_CHILD = "misCocteles";
+    private String miCoctel = "";
 
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
@@ -268,10 +270,8 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
         });
 
         btnAddIngr.setOnClickListener(new View.OnClickListener() {
-
             String ingrediente;
             String cantidad;
-
             @Override
             public void onClick(View view) {
                 if (editIngr.getText().toString().length() > 0) {
@@ -296,6 +296,11 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
                 }
             }
         });
+
+        //se agrega el coctel a firebase, como un  json
+        final DatabaseReference miCoctelReference = database.getReference().child(MI_COCTEL_CHILD);
+        final Map<Integer, Coctel> misCocteles= new HashMap<Integer, Coctel>();
+
 
         btnAddCoctel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -330,8 +335,13 @@ public class IngresoNuevoCoctel extends AppCompatActivity {
                 if (listLicores.size() == 0 || listIngr.size() == 0 || editNombre.equals("") || editDescripcion.equals("")) {
                     Toast.makeText(getApplicationContext(), "Faltan datos por rellenar", Toast.LENGTH_SHORT).show();
                 } else {
+
+
                     Coctel coctel = new Coctel(listLicores, listIngr, editNombre.getText().toString(), editDescripcion.getText().toString(), editDescripcion.getText().toString());
+                    misCocteles.put(1,coctel);
+                    miCoctelReference.setValue(misCocteles);
                     Toast.makeText(getApplicationContext(), "Su coctel " + editNombre.getText().toString() + " ha sido creado", Toast.LENGTH_SHORT).show();
+
                     finish();
                 }
 
