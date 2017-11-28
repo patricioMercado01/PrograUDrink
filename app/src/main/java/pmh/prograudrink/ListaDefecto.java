@@ -115,6 +115,9 @@ public class ListaDefecto extends Fragment {
             if (nombre.equals(nombreBusqueda)){
 
                 findendCoctel = listaCocteles.get(i);
+            }else{
+
+                throw new NullPointerException();
             }
 
 

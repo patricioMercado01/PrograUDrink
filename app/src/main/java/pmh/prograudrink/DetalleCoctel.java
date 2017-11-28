@@ -1,13 +1,21 @@
 package pmh.prograudrink;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -16,6 +24,7 @@ public class DetalleCoctel extends android.support.v4.app.Fragment {
 
     private Coctel actualCoctel;
     private TextView descripcion, ingredientes, preparacion, nombre, licores;
+    private ImageView imagen;
 
 
     @Override
@@ -33,6 +42,7 @@ public class DetalleCoctel extends android.support.v4.app.Fragment {
     public void onStart() {
         super.onStart();
         definirLayout();
+        test();
         mostrar();
     }
 
@@ -48,15 +58,15 @@ public class DetalleCoctel extends android.support.v4.app.Fragment {
 
     public void mostrar() {
 
-      this.nombre.setText(actualCoctel.getNombre());
-      this.descripcion.setText(actualCoctel.getDescripcion());
-      this.preparacion.setText(actualCoctel.getPreparacion());
-      this.licores.setText(obtenerLicores());
-      this.ingredientes.setText(obtenerIngredientes());
+        this.nombre.setText(actualCoctel.getNombre());
+        this.descripcion.setText(actualCoctel.getDescripcion());
+        this.preparacion.setText(actualCoctel.getPreparacion());
+        this.licores.setText(obtenerLicores());
+        this.ingredientes.setText(obtenerIngredientes());
     }
 
     public void definirLayout() {
-
+        this.imagen = getView().findViewById(R.id.imageCoctelImagen);
         this.descripcion = getView().findViewById(R.id.textCoctelDescripcion);
         this.preparacion = getView().findViewById(R.id.textCoctelPreparacion);
         this.ingredientes = getView().findViewById(R.id.textIngredientesCoctel);
@@ -80,26 +90,54 @@ public class DetalleCoctel extends android.support.v4.app.Fragment {
 
     public String obtenerIngredientes() {
         String stringIngredientes = "";
-        ArrayList<String> IngredientesArray = actualCoctel.getIngredientes();
+        if (actualCoctel.getIngredientes()!= null) {
+            ArrayList<String> IngredientesArray = actualCoctel.getIngredientes();
 
-        for (int i = 0; i < IngredientesArray.size(); i++) {
-            String nuevosIngredientes = IngredientesArray.get(i);
-            stringIngredientes += (nuevosIngredientes + " \n ");
+            for (int i = 0; i < IngredientesArray.size(); i++) {
+                String nuevosIngredientes = IngredientesArray.get(i);
+                stringIngredientes += (nuevosIngredientes + " \n ");
+            }
+
+            return stringIngredientes;
+        }else{
+
+            throw new NullPointerException();
         }
-
-        return stringIngredientes;
     }
-        public void setCoctel(Bundle data){
-            this.actualCoctel= new Coctel();
+
+    public void setCoctel(Bundle data) {
+        if (data != null) {
+            this.actualCoctel = new Coctel();
             this.actualCoctel.setNombre(data.getString("nombre"));
             this.actualCoctel.setDescripcion(data.getString("desc"));
             this.actualCoctel.setPreparacion(data.getString("prep"));
             this.actualCoctel.setLicores(data.getStringArrayList("licores"));
             this.actualCoctel.setIngredientes(data.getStringArrayList("ingredientes"));
+        } else {
+            throw new NullPointerException();
         }
-
-
     }
+
+    public void test(){
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference pathReference = storageRef.child("Pictures/"+actualCoctel.getNombre()+".jpg");
+        final long ONE_MEGABYTE = 1024 * 1024;
+        storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bitmap = BitmapFactory.decodeFile("Pictures/"+actualCoctel.getNombre()+".jpg");
+                imagen.setImageBitmap(bitmap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+    }
+
+}
 
 
 
