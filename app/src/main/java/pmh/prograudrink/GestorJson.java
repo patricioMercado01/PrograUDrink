@@ -3,6 +3,8 @@ package pmh.prograudrink;
 /**
  * Created by Jess on 20-11-2017.
  */
+import android.app.VoiceInteractor;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,7 +21,9 @@ public class GestorJson {
     public Coctel jsonToCoctel(String json){
         Gson objJson = new Gson();
         Coctel jsonCoctel = objJson.fromJson(json, Coctel.class);
+
         return jsonCoctel;
     }
+
 
 }

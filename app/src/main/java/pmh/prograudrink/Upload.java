@@ -1,8 +1,5 @@
 package pmh.prograudrink;
 
-/**
- * Created by gabri on 12-11-2017.
- */
 
 public class Upload {
 
@@ -10,8 +7,7 @@ public class Upload {
     public String name;
     public String url;
 
-    // Default constructor required for calls to
-    // DataSnapshot.getValue(User.class)
+
     public Upload() {
     }
 

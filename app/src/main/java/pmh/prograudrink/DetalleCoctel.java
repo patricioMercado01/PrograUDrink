@@ -36,6 +36,7 @@ public class DetalleCoctel extends android.support.v4.app.Fragment {
         setCoctel(data);
         onResume();
         return inflater.inflate(R.layout.fragment_detalle_coctel, container, false);
+
     }
 
     @Override
@@ -119,15 +120,17 @@ public class DetalleCoctel extends android.support.v4.app.Fragment {
     }
 
     public void test(){
+        System.out.println("Prueba 1");
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        StorageReference pathReference = storageRef.child("Pictures/"+actualCoctel.getNombre()+".jpg");
+        StorageReference pathReference = storageRef.child("gs://udrink-5f800.appspot.com/Pictures/"+actualCoctel.getNombre()+".jpg");
         final long ONE_MEGABYTE = 1024 * 1024;
         storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeFile("Pictures/"+actualCoctel.getNombre()+".jpg");
+                Bitmap bitmap = BitmapFactory.decodeFile("gs://udrink-5f800.appspot.com/Pictures/"+actualCoctel.getNombre()+".jpg");
                 imagen.setImageBitmap(bitmap);
+                System.out.println("Prueba intermedia del éxito");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -135,6 +138,7 @@ public class DetalleCoctel extends android.support.v4.app.Fragment {
                 // Handle any errors
             }
         });
+        System.out.println("Prueba2");
     }
 
 }
