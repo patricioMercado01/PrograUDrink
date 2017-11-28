@@ -91,10 +91,6 @@ public class MenuLateral extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.app_bar_search) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
