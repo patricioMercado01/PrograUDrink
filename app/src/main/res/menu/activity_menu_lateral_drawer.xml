@@ -10,8 +10,8 @@
             android:title="Lista Cocteles" />
         <item
             android:id="@+id/favoritos"
-            android:icon="@drawable/favorite"
-            android:title="Mis cocteles" />
+            android:icon="@drawable/folderUser"
+            android:title="Mis Cócteles" />
         <item
             android:id="@+id/inventario"
             android:icon="@drawable/pub"
